@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="EstateBookingDomain/EstateBookingDomain.csproj" />
+  <Project Path="EstateBookingMVC.Infrastructure/EstateBookingInfrastructure.csproj" Id="189c34e0-2da5-47b3-b66d-5d1d8c92cfae" />
+</Solution>
