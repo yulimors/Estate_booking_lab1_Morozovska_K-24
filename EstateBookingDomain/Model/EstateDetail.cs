@@ -3,10 +3,8 @@ using System.Collections.Generic;
 
 namespace EstateBookingDomain.Model;
 
-public partial class EstateDetail
+public partial class EstateDetail: Entity
 {
-    public int EstateId { get; set; }
-
     public int? RoomsCount { get; set; }
 
     public int? BedsCount { get; set; }

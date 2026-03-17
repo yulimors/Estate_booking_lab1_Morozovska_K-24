@@ -102,7 +102,7 @@ public partial class DbEstateBookingContext : DbContext
             entity.Property(e => e.GuestComment).HasColumnName("guest_comment");
             entity.Property(e => e.GuestsCount).HasColumnName("guests_count");
             entity.Property(e => e.StatusId).HasColumnName("status_id");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
+            entity.Property(e => e.UserId).HasColumnName("id");
 
             entity.HasOne(d => d.Estate).WithOne(p => p.Booking)
                 .HasForeignKey<Booking>(d => d.EstateId)
@@ -211,11 +211,11 @@ public partial class DbEstateBookingContext : DbContext
 
         modelBuilder.Entity<EstateDetail>(entity =>
         {
-            entity.HasKey(e => e.EstateId).HasName("estate_details_pkey");
+            entity.HasKey(e => e.Id).HasName("estate_details_pkey");
 
             entity.ToTable("estate_details");
 
-            entity.Property(e => e.EstateId)
+            entity.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnName("estate_id");
             entity.Property(e => e.BathroomsCount).HasColumnName("bathrooms_count");
@@ -225,7 +225,7 @@ public partial class DbEstateBookingContext : DbContext
             entity.Property(e => e.RoomsCount).HasColumnName("rooms_count");
 
             entity.HasOne(d => d.Estate).WithOne(p => p.EstateDetail)
-                .HasForeignKey<EstateDetail>(d => d.EstateId)
+                .HasForeignKey<EstateDetail>(d => d.Id)
                 .HasConstraintName("estate_details_estate_id_fkey");
         });
 
@@ -280,7 +280,7 @@ public partial class DbEstateBookingContext : DbContext
             entity.Property(e => e.EstateId).HasColumnName("estate_id");
             entity.Property(e => e.Rating).HasColumnName("rating");
             entity.Property(e => e.Text).HasColumnName("text");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
+            entity.Property(e => e.UserId).HasColumnName("id");
 
             entity.HasOne(d => d.Estate).WithMany(p => p.Reviews)
                 .HasForeignKey(d => d.EstateId)
@@ -317,7 +317,7 @@ public partial class DbEstateBookingContext : DbContext
                 .HasColumnType("timestamp without time zone")
                 .HasColumnName("created_at");
             entity.Property(e => e.EstateId).HasColumnName("estate_id");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
+            entity.Property(e => e.UserId).HasColumnName("id");
 
             entity.HasOne(d => d.Estate).WithMany(p => p.Saveds)
                 .HasForeignKey(d => d.EstateId)
